@@ -28,9 +28,10 @@ def main():
 	cursor = conn.cursor()
 	cursor.execute(sql_query)
 	data = cursor.fetchone()
-	print data
+	print len(data)
 
 	return render_template('index.html', data=data)
+
 
 if __name__ == "__main__":
     app.run()
