@@ -3,11 +3,14 @@
     <head>
         <title>Python Flask Bucket List App</title>
         <script>
-            var mysql = '{{ data }}'
+            var mysql = {{ data|tojson }}
         </script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
               crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+              crossorigin="anonymous">
+        <link rel="stylesheet" src="static/main.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
                 crossorigin="anonymous">
@@ -24,6 +27,14 @@
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
                 crossorigin="anonymous">
         </script>
+        <link rel="stylesheet" type="text/css" href="static/main.css">
+        <script src="/static/mysql.js"></script>
+        <script src="/static/datatable.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"
+                crossorigin="anonymous">
+        </script>
+
+
     </head>
  
     <body>
@@ -33,6 +44,8 @@
                 Peschpit Plex Database
             </a>
         </nav>
+        <table id="example" class="display" width="100%"></table>
+
     </body>
-    
+
 </html>
