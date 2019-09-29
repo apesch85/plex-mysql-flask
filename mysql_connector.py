@@ -1,3 +1,6 @@
+#! /usr/bin/python
+# -*- coding: utf-8 -*-
+
 import os
 from flaskext.mysql import MySQL
 from flask import Flask
@@ -26,7 +29,7 @@ def build_app():
 def mysql_connect(app):
 	
 	mysql = MySQL()
-	sql_query = 'SELECT * FROM %s LIMIT 1000' % mysql_table
+	sql_query = 'SELECT * FROM %s' % mysql_table
 	 
 	# MySQL configurations
 	mysql.init_app(app)
@@ -41,8 +44,8 @@ def mysql_connect(app):
 		for index, value in enumerate(row):
 			if index == 1 or index == 5:
 				actual_date = value
-				row[index] = str(actual_date)
+				row[index] = actual_date
 			else:
-				value = str(value)
+				value = value
 
 	return results
