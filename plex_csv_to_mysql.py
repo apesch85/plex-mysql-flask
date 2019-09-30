@@ -1,9 +1,11 @@
 import csv
 import os
+import argparse
 import pymysql.cursors
 
-file_location = '/Users/pesch/Downloads/plex_list.csv'
-
+parser = argparse.ArgumentParser()
+parser.add_argument('-f', 'filename', action='store_true')
+file_location = parser.parse_args('-f')
 mysql_username = os.environ['mysql_username']
 mysql_password = os.environ['mysql_password']
 plex_db = os.environ['plex_db']
