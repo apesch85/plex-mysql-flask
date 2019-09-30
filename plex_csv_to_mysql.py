@@ -1,14 +1,15 @@
 import csv
 import os
-import argparse
 import pymysql.cursors
+from absl import flags
+from absl import app
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-f', 'filename', action='store_true')
-file_location = parser.parse_args('-f')
+FLAGS = flags.FLAGS
+flags.DEFINE_string('filename', None, 'Location of .csv file')
+
 mysql_username = os.environ['mysql_username']
 mysql_password = os.environ['mysql_password']
-plex_db = os.environ['plex_db']
+plex_db = os.environ['mysql_db']
 mysql_ip = os.environ['mysql_ip']
 mysql_port = int(os.environ['mysql_port'])
 
@@ -64,10 +65,14 @@ def write_mysql(plex_movies=None, plex_tv_shows=None):
 	print 'Writing to MySQL is complete!'
 
 
-def main():
-	movies = read_csv(file_location)
-	write_mysql(plex_movies=movies)
+def main(unused):
+        if not FLAGS.filename:
+            raise Exception('Please provide a csv file with -f')
+        else:
+            file_location = FLAGS.filename
+	    movies = read_csv(file_location)
+	    write_mysql(plex_movies=movies)
 
 
 if __name__ == '__main__':
-	main()
+	app.run(main)
