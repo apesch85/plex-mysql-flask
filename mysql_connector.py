@@ -29,7 +29,7 @@ def build_app():
 def mysql_connect(app):
 	
 	mysql = MySQL()
-	sql_query = 'SELECT * FROM %s' % mysql_table
+	sql_query = 'SELECT * FROM %s ORDER BY RAND() LIMIT 517' % mysql_table
 	 
 	# MySQL configurations
 	mysql.init_app(app)
