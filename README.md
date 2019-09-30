@@ -14,3 +14,16 @@ To begin perform the following -
   * mysql_table
 * Start the production WSGI server waitress -
   * `python waitress_server.py 2&1> /dev/null &`
+
+## The MySQL table schema
+In order for the datatable to render properly, the following schema must be used -
+
+| Column           | Type          | Null | Key |
+|------------------|---------------|------|-----|
+| movie_title      | varchar(200)  | No   | PRI |
+| movie_year       | varchar(4)    | No   | PRI |
+| movie_rating     | varchar(100)  | Yes  |     |
+| movie_resolution | varchar(100)  | Yes  |     |
+| movie_container  | varchar(25)   | Yes  |     |
+| movie_director   | varchar(1000) | Yes  |     |
+| movie_genre      | varchar(1000) | yes  |     |
